@@ -11,7 +11,7 @@ const Request = ({ img, name, para, btn }) => {
                 <p>{para}</p>
             </div>
             <div className='col'>
-                <a href="#">{btn}</a>
+                <a href="/">{btn}</a>
             </div>
         </div>
     );

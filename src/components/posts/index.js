@@ -19,7 +19,7 @@ const Posts = ({ thumbnail, title, url }) => {
             <div className='post_Img'>
                 <img src={url} alt="" />
             </div>
-            <div className='post_Icon d-flex'>
+            <div className='post_Icon d-flex py-2'>
                 <div className='col'>
                     <ul className=' d-flex'>
                         <li><FontAwesomeIcon icon={faHeart} /></li>

@@ -260,7 +260,8 @@ main {
 }
 .post .post_Icon ul{
     list-style: none;
-    margin: 10px;
+    margin: 0;
+    padding: 0;
 }
 .post .post_Icon ul li{
     padding-right: 10px;

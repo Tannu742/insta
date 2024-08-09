@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/img/Instagram_logo.png';
 import loginScreen from '../../assets/img/instaScreen1.png';
 import loginScreen1 from '../../assets/img/instaScreen2.png';
@@ -10,12 +10,25 @@ import app from '../../assets/img/app.png';
 import app2 from '../../assets/img/app2.png';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useActionData, useNavigate, useSubmit } from 'react-router-dom';
 
 
 const Login = () => {
+    const actions = useActionData();
+    const submit = useSubmit();
+    console.log(actions);
+    const navigate = useNavigate();
     const [type, setType] = useState('password');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
     const [validated, setValidated] = useState(false);
+
+    useEffect(() => {
+        if (actions?.data?.access_token) {
+            sessionStorage.setItem('userInfo', JSON.stringify(actions?.data));
+            navigate('/home');
+        }
+    }, [actions]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,6 +38,12 @@ const Login = () => {
             event.stopPropagation();
         }
         setValidated(true);
+        if (!password || !email) {
+           return alert('Fill all the Information');
+        }
+        submit({ email, password }, {
+            method: 'post'
+        });
     };
 
     const handleEye = () => {
@@ -62,8 +81,10 @@ const Login = () => {
                             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                                 <Form.Control
                                     required
-                                    type="text"
-                                    placeholder="Phone number, username, or email"
+                                    type="email"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e)=>setEmail(e.target.value)}
                                 />
                                 <div className='position-relative'>
                                     <Form.Control

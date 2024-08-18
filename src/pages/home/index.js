@@ -17,7 +17,7 @@ const Home = () => {
                 <div className='row'>
                     <div className='col-8'>
                         <div className='d-flex story'>
-                            <ModalBox show={show} />
+                            <ModalBox show={show} setShow={setShow} fullscreen />
                             {
                                 Stories.map((item) => {
                                     return (

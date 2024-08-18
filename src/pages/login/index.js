@@ -26,7 +26,7 @@ const Login = () => {
     useEffect(() => {
         if (actions?.data?.access_token) {
             sessionStorage.setItem('userInfo', JSON.stringify(actions?.data));
-            navigate('/home');
+            navigate('/');
         }
     }, [actions]);
 

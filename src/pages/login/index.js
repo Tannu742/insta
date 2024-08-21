@@ -103,7 +103,7 @@ const Login = () => {
                             <span>OR</span>
                         </div>
                         <div className='text-center facebook'>
-                            <a href="/">
+                            <a href="/facebook">
                                 <FontAwesomeIcon icon={faFacebook} />
                                 Log in with Facebook
                             </a>

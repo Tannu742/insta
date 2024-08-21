@@ -28,7 +28,7 @@ const Login = () => {
             sessionStorage.setItem('userInfo', JSON.stringify(actions?.data));
             navigate('/');
         }
-    }, [actions]);
+    }, [actions, navigate]);
 
     const handleSubmit = (event) => {
         event.preventDefault();

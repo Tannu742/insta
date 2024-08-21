@@ -113,7 +113,7 @@ const Login = () => {
                         </div>
                     </div>
                     <div className='loginBoxFoot text-center'>
-                        <span>Don't have an account <a href="/sign up">Sign up</a></span>
+                        <span>Don't have an account <a href="/signup">Sign up</a></span>
                     </div>
                     <div className='text-center'>
                         <span>Get the app</span>

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
+
+import { Navigate, useActionData, useNavigate, useSubmit } from 'react-router-dom';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import logo from '../../assets/img/Instagram_logo.png';
 import loginScreen from '../../assets/img/instaScreen1.png';
 import loginScreen1 from '../../assets/img/instaScreen2.png';
 import loginScreen2 from '../../assets/img/instaScreen3.png';
 import loginScreen3 from '../../assets/img/instaScreen4.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import app from '../../assets/img/app.png';
 import app2 from '../../assets/img/app2.png';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useActionData, useNavigate, useSubmit } from 'react-router-dom';
-
 
 const Login = () => {
     const actions = useActionData();
     const submit = useSubmit();
-    console.log(actions);
     const navigate = useNavigate();
     const [type, setType] = useState('password');
     const [password, setPassword] = useState('');
@@ -26,7 +26,7 @@ const Login = () => {
     useEffect(() => {
         if (actions?.data?.access_token) {
             sessionStorage.setItem('userInfo', JSON.stringify(actions?.data));
-            navigate('/');
+            navigate('/home');
         }
     }, [actions, navigate]);
 
@@ -53,6 +53,13 @@ const Login = () => {
             setType('password');
         }
     }
+
+    const userInfo = sessionStorage.getItem('userInfo');
+    const parsed = userInfo ? JSON.parse(userInfo) : {};
+    if (parsed?.access_token) {
+        return <Navigate to={'/home'} />
+    }
+
     return (
         <div className='container'>
             <div className='row justify-content-center'>

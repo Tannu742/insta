@@ -15,7 +15,7 @@ const Home = () => {
         <main>
             <div className='home container'>
                 <div className='row'>
-                    <div className='col-8'>
+                    <div className='col-8 p-0'>
                         <div className='d-flex story'>
                             <ModalBox show={show} setShow={setShow} fullscreen />
                             {
